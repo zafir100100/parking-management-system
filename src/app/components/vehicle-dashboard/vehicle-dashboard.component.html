@@ -1,0 +1,94 @@
+<div class="row" style="text-align: center;">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                Welcome to Parking Management System
+            </div>
+            <div class="card-body">
+                <p class="card-text">Please referesh the page to get updated info</p>
+            </div>
+            <div class="card-footer">
+                Welcome to Parking Management System
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row justify-content-between">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header">
+                Total cars parked
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{totalParkedVehicleCount()}}</p>
+            </div>
+            <div class="card-footer">
+                Total cars parked
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header">
+                Total empty slot
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{totalEmptySlot()}}</p>
+            </div>
+            <div class="card-footer">
+                Total empty slot
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row justify-content-between">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header">
+                Vehicle type info
+            </div>
+            <div class="card-body">
+                <p *ngFor="let item of getParkedVehiclesByTypeReport()" class="card-text">
+                    {{item?.vehicle_type}} : {{item?.total}}
+                </p>
+            </div>
+            <div class="card-footer">
+                Vehicle type info
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header">
+                Vehicle Parked for more than 2 hours
+            </div>
+            <div class="card-body">
+                <p *ngFor="let item of getParkedFor2HrVehiclesByTypeReport()" class="card-text">
+                    {{item?.vehicle_type}} : {{item?.vehicle_license_number}} [{{item?.vehicle_owner_name}} -
+                    {{item.vehicle_owner_phone}}]
+                </p>
+            </div>
+            <div class="card-footer">
+                Vehicle Parked for more than 2 hours
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row" style="text-align: center;">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                Navigation
+            </div>
+            <div class="card-body">
+                <a routerLink="../vehicle-management" class="btn btn-primary">Vehicle management</a>
+            </div>
+            <div class="card-footer">
+                Navigation
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,92 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+    <div class="form-group">
+        <label for="vehicle_license_number">Vehicle Licence Number</label>
+        <input formControlName="vehicle_license_number" type="text" maxlength="100" class="form-control"
+            id="vehicle_license_number" placeholder="Enter Vehicle Licence Number">
+    </div>
+    <div class="form-group">
+        <label for="vehicle_type">Vehicle Type</label>
+        <input formControlName="vehicle_type" type="text" maxlength="100" class="form-control" id="vehicle_type"
+            placeholder="Enter Vehicle Type">
+    </div>
+    <div class="form-group">
+        <label for="vehicle_owner_name">Vehicle owner name</label>
+        <input formControlName="vehicle_owner_name" type="text" maxlength="100" class="form-control"
+            id="vehicle_owner_name" placeholder="Enter Vehicle owner name">
+    </div>
+    <div class="form-group">
+        <label for="vehicle_owner_phone">Vehicle owner phone</label>
+        <input formControlName="vehicle_owner_phone" type="text" maxlength="100" class="form-control"
+            id="vehicle_owner_phone" placeholder="Enter Vehicle owner phone">
+    </div>
+    <div class="form-group">
+        <label for="status">Status</label>
+        <select formControlName="status" id="status" class="form-control">
+            <option value="in">in</option>
+            <option value="out">out</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="car_owner_address">Car owner address</label>
+        <input formControlName="car_owner_address" type="text" maxlength="100" class="form-control"
+            id="car_owner_address" placeholder="Enter Car owner address">
+    </div>
+    <div class="form-group">
+        <label for="car_entry_time">Time and date of car entry</label>
+        <input formControlName="car_entry_time" type="datetime-local" class="form-control" id="car_entry_time"
+            placeholder="Enter Time and date of car entry">
+    </div>
+    <div class="form-group">
+        <label for="car_exit_time">Time and date of car exit</label>
+        <input formControlName="car_exit_time" type="datetime-local" class="form-control" id="car_exit_time"
+            placeholder="Enter Time and date of car exit">
+    </div>
+    <div class="form-group">
+        <label for="parking_charge">Parking charge</label>
+        <input formControlName="parking_charge" type="number" min="0" max="999999" maxlength="100" class="form-control"
+            id="parking_charge" placeholder="Enter Parking charge">
+    </div>
+    <button type="submit" class="btn btn-primary" style="margin-right: 1rem;">Add</button>
+    <button type="button" class="btn btn-success" (click)="update()">Update</button>
+</form>
+<table class="table table-sm table-bordered table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Sl#</th>
+            <th scope="col">Owner name</th>
+            <th scope="col">Vehicle type</th>
+            <th scope="col">License no</th>
+            <th scope="col">Entry time</th>
+            <th scope="col">Exit time</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of vehicles;let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{item?.vehicle_owner_name}}</td>
+            <td>{{item?.vehicle_type}}</td>
+            <td>{{item?.vehicle_license_number}}</td>
+            <td>{{item?.car_entry_time | date:'medium'}}</td>
+            <td>{{item?.car_exit_time | date:'medium'}}</td>
+            <td>{{item?.status}}</td>
+            <td><a (click)="setValue(item)" class="btn btn-success">Edit</a></td>
+        </tr>
+    </tbody>
+</table>
+<div class="row" style="text-align: center;">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                Navigation
+            </div>
+            <div class="card-body">
+                <a routerLink="../vehicle-dashboard" class="btn btn-primary">Vehicle dashboard</a>
+            </div>
+            <div class="card-footer">
+                Navigation
+            </div>
+        </div>
+    </div>
+</div>
